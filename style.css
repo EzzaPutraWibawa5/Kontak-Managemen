@@ -1,0 +1,404 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #EFF6FF 0%, #E0E7FF 100%);
+    min-height: 100vh;
+    padding: 24px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #2563EB 0%, #4F46E5 100%);
+    padding: 48px;
+    color: white;
+}
+
+.header h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #BFDBFE;
+    font-size: 16px;
+}
+
+/* Content */
+.content {
+    padding: 48px;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    position: relative;
+    min-width: 250px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    color: #9CA3AF;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-add {
+    background: #2563EB;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+}
+
+.btn-add:hover {
+    background: #1D4ED8;
+}
+
+/* Contacts Grid */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.contact-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 100%);
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 24px;
+    transition: box-shadow 0.3s;
+}
+
+.contact-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.contact-avatar {
+    background: #DBEAFE;
+    padding: 12px;
+    border-radius: 50%;
+    color: #2563EB;
+}
+
+.contact-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-icon {
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    background: transparent;
+}
+
+.btn-icon.edit {
+    color: #2563EB;
+}
+
+.btn-icon.edit:hover {
+    background: #EFF6FF;
+}
+
+.btn-icon.delete {
+    color: #DC2626;
+}
+
+.btn-icon.delete:hover {
+    background: #FEF2F2;
+}
+
+.contact-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #4B5563;
+}
+
+.contact-info-item svg {
+    flex-shrink: 0;
+}
+
+.contact-company {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #E5E7EB;
+    font-size: 14px;
+    color: #6B7280;
+    font-weight: 600;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 48px;
+}
+
+.empty-state svg {
+    margin: 0 auto 16px;
+    color: #D1D5DB;
+}
+
+.empty-state p {
+    color: #6B7280;
+    font-size: 18px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 480px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-small {
+    max-width: 420px;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: #9CA3AF;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.modal-close:hover {
+    color: #4B5563;
+}
+
+.modal-content h2,
+.modal-content h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 24px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.required {
+    color: #DC2626;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Delete Modal */
+.delete-icon {
+    width: 64px;
+    height: 64px;
+    background: #FEF2F2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: #DC2626;
+}
+
+.modal-content p {
+    color: #4B5563;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+/* Modal Buttons */
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn-cancel,
+.btn-save,
+.btn-delete {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-cancel {
+    background: white;
+    color: #374151;
+    border: 1px solid #D1D5DB;
+}
+
+.btn-cancel:hover {
+    background: #F9FAFB;
+}
+
+.btn-save {
+    background: #2563EB;
+    color: white;
+}
+
+.btn-save:hover {
+    background: #1D4ED8;
+}
+
+.btn-delete {
+    background: #DC2626;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #B91C1C;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+    padding: 32px 24px;
+    }
+
+    .header h1 {
+    font-size: 28px;
+    }
+
+    .content {
+    padding: 24px;
+    }
+
+    .toolbar {
+    flex-direction: column;
+    }
+
+    .search-box {
+    width: 100%;
+    }
+
+    .contacts-grid {
+    grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+    padding: 24px;
+    }
+}
+
